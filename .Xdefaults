@@ -1,0 +1,66 @@
+! Restore Ctrl+Shift+(c|v)
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! URxvt*background: [90]#000000
+! URxvt*depth: 32
+! URxvt*foreground: #FFFFFF
+
+! Xresources file
+
+!URxvt*inheritPixmap: true
+!URxvt*transparent: true
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt*shading: 0
+!
+URxvt*font: xft:"Fura Code Regular Nerd Font Complete":pixelsize=14:antialias=true
+URxvt*boldFont: xft:"Fira Code Bold":pixelsize=14:antialias=true
+URxvt*italicFont: xft:"Fira Code Medium Nerd Font Complete Mono":pixelsize=14:antialias=true
+URxvt*letterSpace: -4
+
+!TABS
+URxvt.perl-ext-common : default,tabbed
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    3
+URxvt.tabbed.tab-bg:    0
+
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+URxvt*geometry: 85x20
+URxvt*fading:        0
+URxvt*tintColor:     #ffffff
+URxvt*shading:        32
+URxvt*inheritPixmap:     False
+
+! black + red
+!urxvt*color0:     #3f3f3f
+urxvt*color0:      #101010
+urxvt*color1:      #705050
+! green + yellow
+urxvt*color2:      #60b48a
+urxvt*color3:      #f0dfaf
+! blue + purple
+urxvt*color4:      #506070
+urxvt*color5:      #dc8cc3
+! cyan + white
+urxvt*color6:      #8cd0d3
+urxvt*color7:      #dcdccc
+! bright-black + bright-red
+urxvt*color8:      #000000
+urxvt*color9:      #dca3a3
+! bright-green + bright-yellow
+urxvt*color10:     #c3bf9f
+urxvt*color11:     #f0dfaf
+! bright-blue + bright-purple
+urxvt*color12:     #94bff3
+urxvt*color13:     #ec93d3
+! bright-cyan + bright-white
+urxvt*color14:     #93e0e3
+urxvt*color15:     #ffffff
+!}}}
