@@ -139,6 +139,7 @@ fi
 # this is for conda run start
 eval "$(/home/jack/miniconda3/bin/conda shell.zsh hook)"
 
+# solve for xserver disconnect in period of time
 sudo sysctl -wq net.ipv4.tcp_keepalive_time=300 \
            net.ipv4.tcp_keepalive_intvl=60 \
            net.ipv4.tcp_keepalive_probes=5;
