@@ -167,11 +167,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        position top        
-	status_command i3blocks -c /etc/i3blocks.conf
-	#status_command i3status
-}
+# bar {
+#         position top        
+# 	status_command i3blocks -c /etc/i3blocks.conf
+# 	#status_command i3status
+# }
 
 # floating
 for_window [class="Xfce4-appfinder"] floating enable
@@ -186,8 +186,8 @@ bindsym $mod+z exec dbus-run-session xfce4-appfinder
 exec fcitx
 exec_always compton
 exec_always feh --bg-fill /usr/share/wallpaper.jpg
-
-exec_always xrdb -merge .Xresources
+exec_always zsh ~/.config/polybar/launch.sh --hack
+# exec_always xrdb -merge .Xresources
 exec LANGUAGE=C.UTF-8
 exec LC_MESSAGES=C.UTF-8
 exec LC_CTYPE=zh_TW.UTF-8
