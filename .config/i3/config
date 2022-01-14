@@ -189,7 +189,7 @@ bindsym $mod+r mode "resize"
 for_window [class="Xfce4-appfinder"] floating enable
 
  
-assign [class="Chromium"] number $ws2
+#assign [class="Chromium"] number $ws2
 
 # my bindsym 
 #bindsym $mod+z exec launcher_ribbon
