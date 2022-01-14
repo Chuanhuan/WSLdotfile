@@ -41,7 +41,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -fg green -cr green -bd green &
+# bindsym $mod+Return exec urxvt -fg green -cr green -bd green &
+bindsym $mod+Return exec tilix &
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -188,16 +189,17 @@ bindsym $mod+r mode "resize"
 for_window [class="Xfce4-appfinder"] floating enable
 
  
-assign [class="Code"] number $ws3
+assign [class="Chromium"] number $ws2
 
 # my bindsym 
-bindsym $mod+z exec launcher_ribbon
+#bindsym $mod+z exec launcher_ribbon
+bindsym $mod+z exec xfce4-appfinder
 # Close all windows on workspace 1 (name stored in $ws1)
 # bindsym $mod+Ctrl+3 [workspace=$ws3] kill
 
 # start-up 
 exec_always fcitx
-exec_always compton
+exec_always picom
 exec_always feh --bg-fill /usr/share/wallpaper.jpg
 exec_always bash ~/.config/polybar/launch.sh --hack 
 
@@ -213,3 +215,5 @@ exec #export LC_ALL
 exec export GTK_IM_MODULE=fcitx
 exec export QT_IM_MODULE=fcitx
 exec export XMODIFIERS=@im=fcitx
+
+exec chromium --no-sandbox
