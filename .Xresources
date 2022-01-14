@@ -15,10 +15,14 @@ URxvt*transparent: true
 ! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
 URxvt*shading: 33
 
-URxvt*font: xft:FantasqueSansMono-Regular:pixelsize=18:antialias=true
-URxvt*boldFont: xft:FantasqueSansMono-Bold:pixelsize=18:antialias=true
+URxvt*font: xft:FantasqueSansMono-Regular:pixelsize=18:antialias=true,xft:Fira Code Retina:pixelsize=14:minspace=False
+URxvt*boldFont: xft:FantasqueSansMono-Bold:pixelsize=18:antialias=true,xft:Fira Code Retina:pixelsize=14:minspace=False
 URxvt*italicFont: xft:FantasqueSansMono-Italic:pixelsize=18:antialias=true
 URxvt*letterSpace: -1
+
+!URxvt*font:                 xft:Fira Code Retina:pixelsize=11:minspace=False, xft:DejaVu Sans:pixelsize=8, xft: Symbola
+!URxvt*boldFont:             xft:Fira Code Retina:pixelsize=11:minspace=False, xft:DejaVu Sans:pixelsize=8, xft: Symbola
+
 
 !TABS
 URxvt.perl-ext-common : default,tabbed
