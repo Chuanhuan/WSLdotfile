@@ -181,14 +181,16 @@ for_window [class="Xfce4-appfinder"] floating enable
 
  
 # assign [class="Code"] number $ws3
+assign [class="notion-app"] number $ws2
 
-# my bindsym 
+# my bindsym
 bindsym $mod+z exec dbus-run-session xfce4-appfinder
 # Close all windows on workspace 1 (name stored in $ws1)
 # bindsym $mod+Ctrl+3 [workspace=$ws3] kill
 
 # start-up 
 exec chromium --no-sandbox
+exec notion-app --no-sandbox
 exec fcitx
 # exec_always compton
 exec_always feh --bg-fill /usr/share/wallpaper.jpg
