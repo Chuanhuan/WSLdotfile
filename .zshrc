@@ -5,10 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/zsh-snap/znap.zsh
+# source ~/zsh-snap/znap.zsh
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
-export PATH=$HOME/.config/rofi/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/root/.oh-my-zsh"
@@ -17,8 +16,9 @@ export ZSH="/root/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
 
-#ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
 # Set list of themes to pick from when loading at random
@@ -83,12 +83,11 @@ export ZSH="/root/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
         zsh-autosuggestions 
+	zsh-completions
         git
-        zsh-completions
         )
 # znap source marlonrichert/zsh-autocomplete
 autoload -U compinit && compinit
-
 source $ZSH/oh-my-zsh.sh
 [[ $TERM != "screen" ]] && exec tmux
 
@@ -128,14 +127,9 @@ alias lla="ll -a"
 alias vtt="vncserver-start"
 
 alias vtp="vncserver-stop"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PULSE_SERVER=127.0.0.1
 
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
-
-
-if [[ `tty` == "/dev/tty1" ]] && [[ -z "$TMUX" ]];then
-                tmux
-fi
+alias config='/usr/bin/git --git-dir=/root/.cfg/ --work-tree=/root'
