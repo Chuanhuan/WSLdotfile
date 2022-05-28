@@ -115,6 +115,7 @@ alias ll='exa -alF --icons --color=always --group-directories-first'
 alias la='exa -a --icons --color=always --group-directories-first'
 alias l='exa -F --icons --color=always --group-directories-first'
 alias l.='exa -a | egrep "^\."'
+alias n='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 #wsl2
@@ -143,3 +144,5 @@ eval "$(/home/jack/miniconda3/bin/conda shell.zsh hook)"
 sudo sysctl -wq net.ipv4.tcp_keepalive_time=300 \
            net.ipv4.tcp_keepalive_intvl=60 \
            net.ipv4.tcp_keepalive_probes=5;
+
+source /home/jack/.config/broot/launcher/bash/br
