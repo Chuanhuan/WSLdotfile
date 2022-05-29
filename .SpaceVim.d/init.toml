@@ -23,7 +23,7 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
-    autocomplete_method = "deoplete"
+    autocomplete_method = "coc"
     snippet_engine = "ultisnips"
     todo_labels = ['fixme', 'question', 'todo', 'idea']
     todo_prefix = '@'
