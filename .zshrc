@@ -9,14 +9,14 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jack/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k" 
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -78,13 +78,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completions zsh-autosuggestions)
-autoload -U compinit && compinit
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-[[ $TERM != "screen" ]] && exec tmux
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -110,39 +107,26 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls='exa --icons --color=always --group-directories-first'
-alias ll='exa -alF --icons --color=always --group-directories-first'
-alias la='exa -a --icons --color=always --group-directories-first'
-alias l='exa -F --icons --color=always --group-directories-first'
-alias l.='exa -a | egrep "^\."'
-alias n='nvim'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
-#wsl2
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-export LIBGL_ALWAYS_INDIRECT=1
-# set pulse_dir=mtc/pulse
-# export PULSE_SERVER=tcp:$(grep nameserver /etc/resolv.conf | awk '{print $2}')
-# cd /mnt/c/pulse
-# ./pulseaudio.exe -F config.pa &
-
-cd
+export PULSE_SERVER=127.0.0.1
+alias config='/usr/bin/git --git-dir=/root/.cfg/ --work-tree=/root'
+alias ll="exa -l -g --icons"
+alias lla="ll -a"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH=$PATH:/root/.emacs.d/bin:/root/.local/bin
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# PATH="/opt/miniconda3/bin:$PATH"
-# this is for conda run start
-eval "$(/home/jack/miniconda3/bin/conda shell.zsh hook)"
-
-# solve for xserver disconnect in period of time
-sudo sysctl -wq net.ipv4.tcp_keepalive_time=300 \
-           net.ipv4.tcp_keepalive_intvl=60 \
-           net.ipv4.tcp_keepalive_probes=5;
-
-source /home/jack/.config/broot/launcher/bash/br
+# Codi
+# Usage: codi [filetype] [filename]
+codi() {
+    local syntax="${1:-python}"
+    shift
+    vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+  }
