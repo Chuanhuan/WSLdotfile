@@ -23,7 +23,7 @@ pacman-key --populate
 pacman-key --refresh-keys
 pacman -Sy archlinux-keyring
 ```
-* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code` to update all packages to the latest versions
+* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa` to update all packages to the latest versions
 
 
 ### Create a user
@@ -39,8 +39,50 @@ pacman -Sy archlinux-keyring
 
 * Just follow [How to Install Yay AUR Helper in Arch Linux and Manjaro](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/) guide:
 * `git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
-* Run `yay -Syu` to update all AUR packages and reinstall fakeroot-tcp (will install the latest version)
+* Run `yay -Syu nerd-fonts-fira-code` to update all AUR packages and reinstall fakeroot-tcp (will install the latest version)
 * Remove the leftovers: `rm -rf ~/yay-git`
+
+### git ssh key
+
+`ssh-keygen -t ed25519 -C "studyhuan@gmail.com"`
+`cat ~/.ssh/id_ed25519.pub`
+Add to github https://github.com/settings/keys
+
+### WSL dot files restore
+`alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+`
+`echo ".cfg" >> .gitignore
+`
+`alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+```mkdir -p .config-backup && \
+config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | \
+xargs -I{} mv {} .config-backup/{}
+```
+`config config --local status.showUntrackedFiles no
+`
+
+`config pull
+`
+
+### oh-my-zsh
+`sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+`
+`sudo pacman -S zsh-theme-powerlevel10k `
+
+`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+
+`git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
+source zsh-snap/install.zsh`
+`znap source marlonrichert/zsh-autocomplete`
+
+simply add the following to your .zshrc file:
+
+`znap source marlonrichert/zsh-autocomplete`
+
+### Nerd fonts
+
+https://www.nerdfonts.com/font-downloads
+change windows terminal fonts
 
 ### Goodies
 
@@ -105,3 +147,5 @@ gRPC & Protobuf for Ruby: `gem install google-protobuf grpc grpc-tools`
 
 All WSL machines are available in Windows Explorer on `\\wsl$\` URL, Arch linux is: `\\wsl$\Arch`.
 For additional convenience you could map `\\wsl$\Arch` to a 1-Leter Windows disk share, for example having `Z:\` pointing to `\\wsl$\Arch`
+
+
