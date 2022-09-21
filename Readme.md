@@ -23,7 +23,7 @@ pacman-key --populate
 pacman-key --refresh-keys
 pacman -Sy archlinux-keyring
 ```
-* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa` to update all packages to the latest versions
+* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook` to update all packages to the latest versions
 
 
 ### Create a user
