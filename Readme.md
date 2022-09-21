@@ -49,20 +49,20 @@ pacman -Sy archlinux-keyring
 Add to github https://github.com/settings/keys
 
 ### WSL dot files restore
-`alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-`
-`echo ".cfg" >> .gitignore
-`
-`alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+```
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+echo ".cfg" >> .gitignore
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+```
 ```mkdir -p .config-backup && \
 config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
 ```
-`config config --local status.showUntrackedFiles no
-`
-
-`config pull
-`
+```
+config config --local status.showUntrackedFiles no
+config checkout
+config pull
+```
 
 ### oh-my-zsh
 `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
