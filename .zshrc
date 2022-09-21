@@ -1,9 +1,11 @@
+source ~/zsh-snap/znap.zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -15,7 +17,7 @@ export ZSH="/home/jack/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
 # Set list of themes to pick from when loading at random
@@ -78,12 +80,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completions zsh-autosuggestions)
+
+znap source marlonrichert/zsh-autocomplete
+plugins=(git zsh-autosuggestions)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-[[ $TERM != "screen" ]] && exec tmux
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # User configuration
 
@@ -116,7 +119,7 @@ alias la='exa -a --icons --color=always --group-directories-first'
 alias l='exa -F --icons --color=always --group-directories-first'
 alias l.='exa -a | egrep "^\."'
 alias n='nvim'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 #wsl2
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
@@ -138,11 +141,11 @@ fi
 
 # PATH="/opt/miniconda3/bin:$PATH"
 # this is for conda run start
-eval "$(/home/jack/miniconda3/bin/conda shell.zsh hook)"
+# eval "$(/home/jack/miniconda3/bin/conda shell.zsh hook)"
 
 # solve for xserver disconnect in period of time
-sudo sysctl -wq net.ipv4.tcp_keepalive_time=300 \
-           net.ipv4.tcp_keepalive_intvl=60 \
-           net.ipv4.tcp_keepalive_probes=5;
+# sudo sysctl -wq net.ipv4.tcp_keepalive_time=300 \
+#           net.ipv4.tcp_keepalive_intvl=60 \
+#           net.ipv4.tcp_keepalive_probes=5;
 
-source /home/jack/.config/broot/launcher/bash/br
+source ~/powerlevel10k/powerlevel10k.zsh-theme
