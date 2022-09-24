@@ -23,7 +23,8 @@ pacman-key --populate
 pacman-key --refresh-keys
 pacman -Sy archlinux-keyring
 ```
-* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook` to update all packages to the latest versions
+* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook python-pip` 
+* to update all packages to the latest versions
 
 
 ### Create a user
@@ -41,6 +42,11 @@ pacman -Sy archlinux-keyring
 * `git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
 * Run `yay -Syu nerd-fonts-fira-code` to update all AUR packages and reinstall fakeroot-tcp (will install the latest version)
 * Remove the leftovers: `rm -rf ~/yay-git`
+
+### python packages
+
+`pip3 install numpy skimage scipy torch torchvision matplotlib pandas`
+
 
 ### git ssh key
 
