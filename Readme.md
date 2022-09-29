@@ -77,9 +77,11 @@ config pull
 
 `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
 
-`git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
-source zsh-snap/install.zsh`
-`znap source marlonrichert/zsh-autocomplete`
+```
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
+source zsh-snap/install.zsh
+znap source marlonrichert/zsh-autocomplete
+```
 
 simply add the following to your .zshrc file:
 
