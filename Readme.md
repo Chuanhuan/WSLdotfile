@@ -27,7 +27,7 @@ pacman -Sy archlinux-keyring
 
 ```
 pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook 
-python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra
+python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra fuse nasm check tigervnc
 ```  
 * to update all packages to the latest versions
 
@@ -35,7 +35,7 @@ python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra
 ### Create a user
 
 * Add a sudo group: `groupadd sudo`
-* Enable sudoers: `nano /etc/sudoers` and uncomment lines `%wheel ALL=(ALL) NOPASSWD: ALL` and `%sudo   ALL=(ALL) ALL`
+* Enable sudoers: `vim /etc/sudoers` and uncomment lines `%wheel ALL=(ALL) NOPASSWD: ALL` and `%sudo   ALL=(ALL) ALL`
 * Add new admin user: `useradd -m -G wheel,sudo -s /bin/zsh jack`
 * Set password for the new user: `passwd jack`
 * Run Windows command shell, go to the directory with Arch Linux, run `Arch.exe config --default-user jack`. Now you have basic ArchLinux with user.
