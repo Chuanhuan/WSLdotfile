@@ -10,7 +10,7 @@
 
 ### Initialize package manager
 
-* Add custom pacman repository with additional packages: `nano /etc/pacman.conf` Then add following to the bottom:
+* Add custom pacman repository with additional packages: `vim /etc/pacman.conf` Then add following to the bottom:
 ```
 [archlinuxfr]
 SigLevel = Never
@@ -23,7 +23,12 @@ pacman-key --populate
 pacman-key --refresh-keys
 pacman -Sy archlinux-keyring
 ```
-* Run `pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook python-pip` 
+* Run
+
+```
+pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook 
+python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra
+```  
 * to update all packages to the latest versions
 
 
@@ -40,7 +45,11 @@ pacman -Sy archlinux-keyring
 
 * Just follow [How to Install Yay AUR Helper in Arch Linux and Manjaro](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/) guide:
 * `git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
-* Run `yay -Syu nerd-fonts-fira-code` to update all AUR packages and reinstall fakeroot-tcp (will install the latest version)
+* Run 
+```
+yay -Syu nerd-fonts-fira-code
+``` 
+* to update all AUR packages and reinstall fakeroot-tcp (will install the latest version)
 * Remove the leftovers: `rm -rf ~/yay-git`
 
 ### python packages
