@@ -27,7 +27,8 @@ pacman -Sy archlinux-keyring
 
 ```
 pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook 
-python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra fuse nasm check tigervnc
+python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra fuse nasm check kitty
+xfce4-appfinder xfce4-terminal tigervnc
 ```  
 * to update all packages to the latest versions
 
@@ -59,8 +60,12 @@ yay -Syu nerd-fonts-fira-code
 
 ### git ssh key
 
-`ssh-keygen -t ed25519 -C "studyhuan@gmail.com"`
-`cat ~/.ssh/id_ed25519.pub`
+```
+ssh-keygen -t ed25519 -C "studyhuan@gmail.com"
+```
+```
+cat ~/.ssh/id_ed25519.pub
+```
 Add to github https://github.com/settings/keys
 
 ### WSL dot files restore
@@ -80,11 +85,16 @@ config pull
 ```
 
 ### oh-my-zsh
-`sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-`
-`sudo pacman -S zsh-theme-powerlevel10k `
+```
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+```
+sudo pacman -S zsh-theme-powerlevel10k 
+```
 
-`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
 
 ```
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
