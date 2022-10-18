@@ -1,3 +1,4 @@
+source ~/znap\ source\ marlonrichert/zsh-autocomplete/zsh-snap/znap.zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -81,6 +82,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+znap source marlonrichert/zsh-autocomplete
+
 
 # User configuration
 
