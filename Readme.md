@@ -28,7 +28,7 @@ pacman -Sy archlinux-keyring
 ```
 pacman -Syyu zsh git oepnssh go base-devel wget python i3 code tmux exa jupyter-notebook 
 python-pip neovim vim ttf-arphic-ukai wqy-microhei fcitx fcitx-table-extra fuse nasm check kitty
-xfce4-appfinder xfce4-terminal tigervnc
+xfce4-appfinder xfce4-terminal tigervnc ctags codespell flake8
 ```  
 * to update all packages to the latest versions
 
@@ -55,7 +55,7 @@ yay -Syu nerd-fonts-fira-code
 
 ### python packages
 
-`pip3 install numpy skimage scipy torch torchvision matplotlib pandas`
+`pip3 install numpy skimage scipy torch torchvision matplotlib pandas python-lsp-server`
 
 
 ### git ssh key
