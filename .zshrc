@@ -1,4 +1,4 @@
-source ~/znap\ source\ marlonrichert/zsh-autocomplete/zsh-snap/znap.zsh
+source ~/zsh-snap/znap.zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -17,7 +17,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k" 
+# ZSH_THEME="powerlevel10k/powerlevel10k" 
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -118,7 +118,7 @@ alias lla="ll -a"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH=$PATH:/root/.emacs.d/bin:/root/.local/bin
+export PATH=$PATH:/root/.emacs.d/bin:/root/.local/bin:~/.local/bin
 
 # Codi
 # Usage: codi [filetype] [filename]
@@ -133,3 +133,7 @@ codi() {
     hi NonText ctermfg=0 |\
     Codi $syntax" "$@"
   }
+
+export DISPLAY=:0
+export XDG_RUNTIME_DIR=/temp
+export MOZ_FAKE_NO_SANDBOX=1
