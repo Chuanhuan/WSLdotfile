@@ -129,8 +129,8 @@ lvim.builtin.treesitter.highlight.enable = true
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
   { command = "black", filetypes = { "python" } },
   { command = "isort", filetypes = { "python" } },
   {
@@ -142,11 +142,11 @@ formatters.setup {
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
     filetypes = { "typescript", "typescriptreact" },
   },
-}
+})
 
 -- -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
   { command = "flake8", filetypes = { "python" } },
   {
     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -160,8 +160,7 @@ linters.setup {
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
     filetypes = { "javascript", "python" },
   },
-}
-
+})
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
@@ -177,7 +176,6 @@ linters.setup {
 --   end,
 -- })
 
-
 -- my python setup
 lvim.builtin.terminal.open_mapping = "<c-t>"
 lvim.format_on_save = false
@@ -191,27 +189,31 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 -- Set a formatter.
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
   { command = "black", filetypes = { "python" } },
-}
+})
 
 -- Set a linter.
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
   { command = "flake8", filetypes = { "python" } },
-}
+})
 
 -- TODO: debugpy installed by default
 -- Setup dap for python
 lvim.builtin.dap.active = true
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
-pcall(function() require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python") end)
+local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+pcall(function()
+  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+end)
 
 -- Supported test frameworks are unittest, pytest and django. By default it
 -- tries to detect the runner by probing for pytest.ini and manage.py, if
 -- neither are present it defaults to unittest.
-pcall(function() require("dap-python").test_runner = "pytest" end)
+pcall(function()
+  require("dap-python").test_runner = "pytest"
+end)
 
 -- Magma Setup
 
@@ -238,7 +240,7 @@ vim.g.magma_cell_highlight_group = "CursorLine"
 -- The generated file is placed in this directory, with the filename itself
 -- being the buffer's name, with % replaced by %% and / replaced by %, and
 -- postfixed with the extension .json.
-vim.g.magma_save_path = vim.fn.stdpath "data" .. "/magma"
+vim.g.magma_save_path = vim.fn.stdpath("data") .. "/magma"
 
 -- Mappings
 lvim.builtin.which_key.mappings["dm"] = { "<cmd>lua require('dap-python').test_method()<cr>", "Test Method" }
@@ -265,8 +267,6 @@ lvim.builtin.which_key.mappings["r"] = {
   r = { "<cmd>IronRepl<cr>", "IronREPL" },
 }
 
-
-
 lvim.builtin.which_key.vmappings["j"] = {
   name = "Jupyter",
   e = { "<esc><cmd>MagmaEvaluateVisual<cr>", "Evaluate Highlighted Line" },
@@ -287,7 +287,7 @@ lvim.plugins = {
     -- You can generate docstrings automatically.
     "danymat/neogen",
     config = function()
-      require("neogen").setup {
+      require("neogen").setup({
         enabled = true,
         languages = {
           python = {
@@ -296,15 +296,15 @@ lvim.plugins = {
             },
           },
         },
-      }
+      })
     end,
   },
   -- You can run blocks of code like jupyter notebook.
-  { "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" },
+  { "dccsillag/magma-nvim", build = ":UpdateRemotePlugins" },
 
   {
     "hkupty/iron.nvim",
-    require("iron.core").setup {
+    require("iron.core").setup({
       config = {
         -- Whether a repl should be discarded or not
         scratch_repl = true,
@@ -313,12 +313,12 @@ lvim.plugins = {
           sh = {
             -- Can be a table or a function that
             -- returns a table (see below)
-            command = { "zsh" }
-          }
+            command = { "zsh" },
+          },
         },
         -- How the repl window will be displayed
         -- See below for more information
-        repl_open_cmd = require('iron.view').split.vertical("40%"),
+        repl_open_cmd = require("iron.view").split.vertical("40%"),
       },
       -- Iron doesn't set keymaps by default anymore.
       -- You can set them here or manually add keymaps to the functions in iron.core
@@ -339,16 +339,15 @@ lvim.plugins = {
       -- If the highlight is on, you can change how it looks
       -- For the available options, check nvim_set_hl
       highlight = {
-        italic = true
+        italic = true,
       },
       ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
-    },
-
+    }),
   },
   --extra plugin
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
@@ -359,7 +358,14 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
-
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && yarn install",
+    ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
+  },
   {
     "kevinhwang91/nvim-bqf",
     event = { "BufRead", "BufNew" },
@@ -370,7 +376,17 @@ lvim.plugins = {
           win_height = 12,
           win_vheight = 12,
           delay_syntax = 80,
-          border_chars = { "Γöâ", "Γöâ", "Γöü", "Γöü", "ΓöÅ", "Γöô", "Γöù", "Γö¢", "Γûê" },
+          border_chars = {
+            "Γöâ",
+            "Γöâ",
+            "Γöü",
+            "Γöü",
+            "ΓöÅ",
+            "Γöô",
+            "Γöù",
+            "Γö¢",
+            "Γûê",
+          },
         },
         func_map = {
           vsplit = "",
@@ -386,16 +402,15 @@ lvim.plugins = {
       })
     end,
   },
-
 }
 
 -- for copy and pates between WSL and windows
 vim.opt.clipboard = "unnamedplus"
-if vim.fn.has('wsl') == 1 then
-  vim.api.nvim_create_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('Yank', { clear = true }),
+if vim.fn.has("wsl") == 1 then
+  vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("Yank", { clear = true }),
     callback = function()
-      vim.fn.system('clip.exe', vim.fn.getreg('"'))
+      vim.fn.system("clip.exe", vim.fn.getreg('"'))
     end,
   })
 end
