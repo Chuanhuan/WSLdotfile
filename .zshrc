@@ -77,8 +77,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+# plugins=(git)
+plugins=(	
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	colorize
+	colored-man-pages
+	tmux
+)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -106,8 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-
+alias sumatraPDF="/mnt/c/Users/study/AppData/Local/SumatraPDF/SumatraPDF.exe"
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -119,3 +125,13 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias config='/usr/bin/git --git-dir=/home/jack/.cfg/ --work-tree=/home/jack'
+
+
+# # The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/home/jack/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jack/google-cloud-sdk/path.zsh.inc'; fi
+#
+# # The next line enables shell command completion for gcloud.
+# if [ -f '/home/jack/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jack/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+source ~/venv/bin/activate
