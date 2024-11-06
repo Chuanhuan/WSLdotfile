@@ -126,7 +126,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias config='/usr/bin/git --git-dir=/home/jack/.cfg/ --work-tree=/home/jack'
 
-
+export OPENAI_API_KEY=sk-Rn7MoeM8xxURE9rZFeB9Ac85Da284cA7802083C62eFeF149
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/home/jack/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jack/google-cloud-sdk/path.zsh.inc'; fi
 #

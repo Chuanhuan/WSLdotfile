@@ -18,12 +18,32 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.wrap = true
   end,
 })
--- require("project_nvim").setup({
---   manual_mode = false, -- Automatically detect the project root
---   detection_methods = { "lsp", "pattern" }, -- Use LSP and pattern detection methods
---   patterns = { ".git", "Makefile", "package.json" }, -- Patterns to identify the project root
---   show_hidden = false, -- Do not show hidden files
---   silent_chdir = true, -- Do not print messages when changing directories
---   scope_chdir = "global", -- Change directory globally
---   datapath = vim.fn.stdpath("data"), -- Path to store project data
--- })
+
+-- Create an autocommand group for Markdown settings
+vim.api.nvim_create_augroup("MarkdownSettings", { clear = true })
+
+-- Add an autocommand to enable text wrapping for .md files
+vim.api.nvim_create_autocmd("FileType", {
+  group = "MarkdownSettings",
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
+
+-- Function to open PDF with SumatraPDF
+local function open_pdf_with_sumatra(pdf_path)
+  -- Command to open PDF with SumatraPDF in the background and suppress logs
+  local command = 'sumatrapdf "' .. pdf_path .. '" &> /dev/null &'
+  os.execute(command)
+end
+
+-- Autocommand to open PDF files with SumatraPDF
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.pdf",
+  callback = function()
+    local pdf_path = vim.fn.expand("%:p")
+    open_pdf_with_sumatra(pdf_path)
+    vim.cmd("bd!") -- Close the buffer after opening the PDF
+  end,
+})
