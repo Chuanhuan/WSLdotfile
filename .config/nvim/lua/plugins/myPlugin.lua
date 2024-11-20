@@ -29,15 +29,6 @@ return {
     -- See Commands section for default commands if you want to lazy load on them
   },
 
-  -- "luk400/vim-jukit",
-  -- {
-  --   "kiyoon/jupynium.nvim",
-  --   build = "pip3 install --user .",
-  --   -- build = "conda run --no-capture-output -n jupynium pip install .",
-  --   -- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
-  -- },
-  -- "rcarriga/nvim-notify", -- optional
-  -- "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
   {
     "GCBallesteros/jupytext.nvim",
     config = true,
@@ -126,10 +117,6 @@ return {
       window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
     },
   },
-  {
-    "willothy/wezterm.nvim",
-    config = true,
-  },
 
   {
     "linux-cultist/venv-selector.nvim",
@@ -146,18 +133,6 @@ return {
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
   },
 
-  -- {
-  --   "rmagatti/auto-session",
-  --   dependencies = {
-  --     "nvim-telescope/telescope.nvim", -- Only needed if you want to use sesssion lens
-  --   },
-  --   config = function()
-  --     require("auto-session").setup({
-  --       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/", "~/Documents" },
-  --     })
-  --   end,
-  -- },
-
   {
     "pappasam/nvim-repl",
     init = function()
@@ -173,24 +148,6 @@ return {
       { "<leader>cc", "<cmd>ReplRunCell<cr>", desc = "nvim-repl run cell" },
     },
   },
-  -- install without yarn or npm
-  -- {
-  --     "iamcco/markdown-preview.nvim",
-  --     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --     ft = { "markdown" },
-  --     build = function() vim.fn["mkdp#util#install"]() end,
-  -- }
-
-  -- install with yarn or npm
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --   build = "cd app && yarn install",
-  --   init = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  --   ft = { "markdown" },
-  -- },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -200,30 +157,27 @@ return {
     end,
     ft = { "markdown" },
   },
-  -- {
-  --   "lervag/vimtex",
-  --   lazy = false, -- we don't want to lazy load VimTeX
-  --   -- tag = "v2.15", -- uncomment to pin to a specific release
-  --   init = function()
-  --     -- VimTeX configuration goes here, e.g.
-  --     vim.g.vimtex_view_method = "zathura"
-  --   end,
-  -- },
   {
     "L3MON4D3/LuaSnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
-    opts = {
-      history = true,
-      delete_check_events = "TextChanged",
-    },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local luasnip_loader = require("luasnip.loaders.from_vscode")
-      luasnip_loader.lazy_load({ paths = { "./snippets" } })
-      luasnip_loader.lazy_load()
+      require("luasnip.loaders.from_snipmate").load({ paths = { "~/.config/nvim/snippets/" } })
     end,
   },
+  -- {
+  --   "L3MON4D3/LuaSnip",
+  --   dependencies = {
+  --     "rafamadriz/friendly-snippets",
+  --   },
+  --   opts = {
+  --     history = true,
+  --     delete_check_events = "TextChanged",
+  --   },
+  --   config = function()
+  --     local luasnip_loader = require("luasnip.loaders.from_vscode")
+  --     luasnip_loader.lazy_load({ paths = { "~/.config/nvim/snippets" } })
+  --   end,
+  -- },
   {
     "ahmedkhalf/project.nvim",
     opts = {
