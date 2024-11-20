@@ -78,14 +78,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
-plugins=(	
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-	colorize
-	colored-man-pages
-	tmux
-)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -135,3 +128,9 @@ export OPENAI_API_KEY=sk-Rn7MoeM8xxURE9rZFeB9Ac85Da284cA7802083C62eFeF149
 
 
 source ~/venv/bin/activate
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
