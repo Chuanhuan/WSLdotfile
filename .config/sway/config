@@ -5,11 +5,7 @@
 # Read `man 5 sway` for a complete reference.
 
 # styles - set the folder for your theme definition file
-set $mod Mod1
 set $theme /usr/share/sway/themes/matcha-green
-set $term kitty
-set $browser microsoft-edge-stable
-bindsym $mod+Return exec $term
 
 # theme variables
 include $theme/theme.conf
@@ -37,6 +33,14 @@ include /etc/sway/config.d/*
 # user config
 include $HOME/.config/sway/config.d/*.conf
 
+set $mod Mod1
+set $term kitty
+set $browser microsoft-edge-stable
+bindsym $mod+Return exec $term
+set $KITTY_ENABLE_WAYLAND 1
+exec kitty --enable-wayland yes
+
+
 exec kitty
 exec microsoft-edge-stable --gtk-version=4
 exec fcitx5
@@ -44,3 +48,13 @@ exec export GTK_IM_MODULE=fcitx
 exec export QT_IM_MODULE=fcitx
 exec export QT_IM_MODULE=fcitx
 exec export XMODIFIERS="@im=fcitx"
+exec discord --enable-features=UseOzonePlatform --ozone-platform=x11 
+
+# Disable auto brightness
+exec_always pkill -f "sway-auto-brightness"  # Kill any auto-brightness service
+
+
+for_window [class="discord"] move to workspace 5
+for_window [app_id="org.kde.dolphin"] move to workspace 4
+for_window [app_id="discord"] move to workspace 5
+for_window [app_id="msedge-_pjibgclleladliembfgfagdaldikeohf-Default"] move to workspace 9
