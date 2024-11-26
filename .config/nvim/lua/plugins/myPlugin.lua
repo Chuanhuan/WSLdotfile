@@ -46,29 +46,7 @@ return {
       vim.g.molten_virt_text_output = true
       vim.g.molten_auto_open_output = true
       -- vim.g.molten_image_provider = "image.nvim"
-      vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
-      -- vim.keymap.set("n", "<leader>ji", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
-      -- vim.keymap.set(
-      --   "n",
-      --   "<leader>je",
-      --   ":MoltenEvaluateOperator<CR>",
-      --   { silent = true, desc = "run operator selection" }
-      -- )
-      -- vim.keymap.set("n", "<leader>jl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
-      -- vim.keymap.set("n", "<leader>jr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
-      -- vim.keymap.set(
-      --   "v",
-      --   "<leader>cr",
-      --   ":<C-u>MoltenEvaluateVisual<CR>gv",
-      --   { silent = true, desc = "evaluate visual selection" }
-      -- )
-      -- vim.keymap.set("n", "<leader>jd", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
-      -- vim.keymap.set("n", "<leader>jo", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
-      -- vim.keymap.set(
-      --   "n",
-      --   "<leader>js",
-      --   ":noautocmd MoltenEnterOutput<CR>",
-      --   { silent = true, desc = "show/enter output" }
+      vim.g.python3_host_prog = vim.fn.expand("~/venv/bin/python3")
       vim.keymap.set("n", "<localleader>ri", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
       vim.keymap.set(
         "n",
@@ -93,7 +71,7 @@ return {
         { silent = true, desc = "evaluate visual selection" }
       ) -- )
       vim.keymap.set("n", "<localleader>rp", function()
-        local venv = os.getenv("VIRTUAL_ENV")
+        local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
         if venv ~= nil then
           -- in the form of /home/benlubas/.virtualenvs/VENV_NAME
           venv = string.match(venv, "/.+/(.+)")
@@ -140,7 +118,9 @@ return {
         javascript = "node",
         python = "ipython --no-autoindent",
       }
-      vim.g.repl_width = 60
+      -- vim.g.repl_width = 60
+      vim.g.repl_height = 10
+      vim.g.repl_split = "bottom"
       vim.keymap.set("x", "<Leader>e", "<Plug>ReplSendVisual", { desc = "Send visual selection to REPL" })
     end,
     keys = {
@@ -164,20 +144,6 @@ return {
       require("luasnip.loaders.from_snipmate").load({ paths = { "~/.config/nvim/snippets/" } })
     end,
   },
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   dependencies = {
-  --     "rafamadriz/friendly-snippets",
-  --   },
-  --   opts = {
-  --     history = true,
-  --     delete_check_events = "TextChanged",
-  --   },
-  --   config = function()
-  --     local luasnip_loader = require("luasnip.loaders.from_vscode")
-  --     luasnip_loader.lazy_load({ paths = { "~/.config/nvim/snippets" } })
-  --   end,
-  -- },
   {
     "ahmedkhalf/project.nvim",
     opts = {
@@ -331,5 +297,19 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
+  },
+  {
+    "michaelb/sniprun",
+    branch = "master",
+
+    build = "sh install.sh",
+    -- do 'sh install.sh 1' if you want to force compile locally
+    -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+
+    config = function()
+      require("sniprun").setup({
+        -- your options
+      })
+    end,
   },
 }

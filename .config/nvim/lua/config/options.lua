@@ -2,8 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.g.vimtex_view_general_viewer = "sumatraPDF"
--- vim.g.vimtex_view_general_viewer = "Okular"
+-- vim.g.vimtex_view_general_viewer = "sumatraPDF"
+vim.g.vimtex_view_general_viewer = "okular"
 vim.g.vimtex_view_general_options = "-reuse-instance @pdf"
 vim.g.vimtex_view_general_options_latexmk = "-reuse-instance"
 
@@ -47,3 +47,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     vim.cmd("bd!") -- Close the buffer after opening the PDF
   end,
 })
+
+vim.api.nvim_set_keymap("v", "<leader>r", "<Plug>SnipRun", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>r", "<Plug>SnipRun", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>f", "<Plug>SnipRunOperator", { silent = true })
+
+vim.g.slime_target = "kitty"
