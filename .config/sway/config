@@ -33,7 +33,7 @@ include /etc/sway/config.d/*
 # user config
 include $HOME/.config/sway/config.d/*.conf
 
-set $mod Mod1
+# set $mod Mod1
 set $term kitty
 set $browser microsoft-edge-stable
 bindsym $mod+Return exec $term
@@ -44,6 +44,7 @@ exec kitty --enable-wayland yes
 exec kitty
 exec microsoft-edge-stable --gtk-version=4
 exec fcitx5
+# exec remmina
 exec export GTK_IM_MODULE=fcitx
 exec export QT_IM_MODULE=fcitx
 exec export QT_IM_MODULE=fcitx
@@ -54,7 +55,10 @@ exec discord --enable-features=UseOzonePlatform --ozone-platform=x11
 exec_always pkill -f "sway-auto-brightness"  # Kill any auto-brightness service
 
 
+for_window [app_id="imv"] floating enable
+for_window [app_id="kitty"] move to workspace 2
 for_window [class="discord"] move to workspace 5
 for_window [app_id="org.kde.dolphin"] move to workspace 4
+for_window [app_id="org.gnome.Nautilus"] move to workspace 4
 for_window [app_id="discord"] move to workspace 5
 for_window [app_id="msedge-_pjibgclleladliembfgfagdaldikeohf-Default"] move to workspace 9

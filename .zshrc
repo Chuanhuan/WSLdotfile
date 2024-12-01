@@ -4,7 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -108,7 +108,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sumatraPDF="/mnt/c/Users/study/AppData/Local/SumatraPDF/SumatraPDF.exe"
+
+# for windows 11 WSL
+# alias sumatraPDF="/mnt/c/Users/study/AppData/Local/SumatraPDF/SumatraPDF.exe"
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -116,10 +118,9 @@ fi
 
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias config='/usr/bin/git --git-dir=/home/jack/.cfg/ --work-tree=/home/jack'
 
 export OPENAI_API_KEY=sk-Rn7MoeM8xxURE9rZFeB9Ac85Da284cA7802083C62eFeF149
@@ -131,10 +132,10 @@ export OPENAI_API_KEY=sk-Rn7MoeM8xxURE9rZFeB9Ac85Da284cA7802083C62eFeF149
 
 
 source ~/venv/bin/activate
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
-echo "ZSHRC LOADED AT $(date)"
+# echo "ZSHRC LOADED AT $(date)"
